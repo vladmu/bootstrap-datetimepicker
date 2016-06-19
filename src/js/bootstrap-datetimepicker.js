@@ -479,7 +479,7 @@
             },
 
             notifyEvent = function (e) {
-                if (e.type === 'dp.change' && ((e.date && e.date.isSame(e.oldDate)) || (!e.date && !e.oldDate))) {
+                if (e.type === 'dp.change' && ((true || (e.date && e.date.isSame(e.oldDate))) || (!e.date && !e.oldDate))) {
                     return;
                 }
                 element.trigger(e);
