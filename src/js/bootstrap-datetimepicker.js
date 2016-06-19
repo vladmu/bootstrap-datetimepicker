@@ -1416,6 +1416,9 @@
          * a clone when setting a private variable.
          *
          ********************************************************************************/
+        picker.next = actions.next;
+        picker.previous = actions.previous;
+
         picker.destroy = function () {
             ///<summary>Destroys the widget and removes all attached event listeners</summary>
             hide();
