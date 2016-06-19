@@ -1420,14 +1420,14 @@
             if (!isValid(viewDate.clone().add(1, 'M'), 'M')) {
                 return;
             }
-            actions.next;
+            actions.next();
         };
 
         picker.previous = function () {
             if (!isValid(viewDate.clone().subtract(1, 'M'), 'M')) {
                 return;
             }
-            actions.previous;
+            actions.previous();
         };
 
         picker.destroy = function () {
