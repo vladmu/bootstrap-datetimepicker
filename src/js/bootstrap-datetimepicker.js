@@ -1416,8 +1416,19 @@
          * a clone when setting a private variable.
          *
          ********************************************************************************/
-        picker.next = actions.next;
-        picker.previous = actions.previous;
+        picker.next = function () {
+            if (!isValid(viewDate.clone().add(1, 'M'), 'M')) {
+                return;
+            }
+            actions.next;
+        };
+
+        picker.previous = function () {
+            if (!isValid(viewDate.clone().subtract(1, 'M'), 'M')) {
+                return;
+            }
+            actions.previous;
+        };
 
         picker.destroy = function () {
             ///<summary>Destroys the widget and removes all attached event listeners</summary>
