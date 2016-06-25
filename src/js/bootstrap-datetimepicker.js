@@ -939,6 +939,9 @@
              ********************************************************************************/
             actions = {
                 next: function () {
+                    if (!isValid(viewDate.clone().add(1, 'M'), 'M')) {
+                        return;
+                    }
                     var navFnc = datePickerModes[currentViewMode].navFnc;
                     viewDate.add(datePickerModes[currentViewMode].navStep, navFnc);
                     fillDate();
@@ -946,6 +949,9 @@
                 },
 
                 previous: function () {
+                    if (!isValid(viewDate.clone().subtract(1, 'M'), 'M')) {
+                        return;
+                    }
                     var navFnc = datePickerModes[currentViewMode].navFnc;
                     viewDate.subtract(datePickerModes[currentViewMode].navStep, navFnc);
                     fillDate();
@@ -1417,17 +1423,13 @@
          *
          ********************************************************************************/
         picker.next = function () {
-            if (!isValid(viewDate.clone().add(1, 'M'), 'M')) {
-                return;
-            }
-            actions.next();
+            actions.next.call(picker);
+            return picker;
         };
 
         picker.previous = function () {
-            if (!isValid(viewDate.clone().subtract(1, 'M'), 'M')) {
-                return;
-            }
-            actions.previous();
+            actions.previous.call(picker);
+            return picker;
         };
 
         picker.destroy = function () {
